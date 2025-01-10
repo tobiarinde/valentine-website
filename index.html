@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to left, #ff7eb9, #f06, #ff4081, #f50057);
+            background-size: 400% 400%;
+            animation: bgAnimation 10s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes bgAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            transform: scale(0.95);
+            animation: scaleUp 0.6s ease-out forwards;
+        }
+
+        @keyframes scaleUp {
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4081;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .message {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: left;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .message p {
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #f50057;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 35px;
+            font-weight: bold;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 20px;
+            border: 2px solid #ff4081;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 350px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #f50057;
+            box-shadow: 0 0 8px rgba(255, 0, 87, 0.7);
+        }
+
+        .submit-button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .submit-button:hover {
+            background-color: #f50057;
+            transform: scale(1.1);
+        }
+
+        .submit-button:active {
+            background-color: #c51162;
+            transform: scale(1);
+        }
+
+        .thankYouMessage {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4caf50;
+            margin-top: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .clouds {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 200px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: moveClouds 10s infinite;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .stars {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 40px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .message {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .question {
+                font-size: 28px;
+            }
+
+            input[type="text"] {
+                font-size: 18px;
+                padding: 10px;
+                width: 90%;
+                max-width: 280px;
+            }
+
+            .submit-button {
+                padding: 15px 25px;
+                font-size: 18px;
+            }
+
+            .thankYouMessage {
+                font-size: 20px;
+            }
+        }
+
+        /* Mobile responsiveness for very small devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 30px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+
+            .question {
+                font-size: 26px;
+            }
+
+            input[type="text"] {
+                font-size: 16px;
+                padding: 8px;
+                width: 100%;
+            }
+
+            .submit-button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .thankYouMessage {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="clouds"></div>
+<div class="stars" style="animation-delay: 0s;"></div>
+<div class="stars" style="animation-delay: 0.5s;"></div>
+<div class="stars" style="animation-delay: 1s;"></div>
+
+<div class="container">
+    <!-- Heartfelt message -->
+    <div class="message">
+        <p class="name">Oluwanifemi,</p>
+        <p>My heart is full of love because of you. Every moment with you feels like a dream come true, and the thought of you brings a smile to my face even on the toughest days. You have a way of making the world feel brighter, and with you by my side, I know anything is possible. You are my greatest adventure, my safe place, and the one I want to spend forever with. You are not just my love, you are my everything.</p>
+        <p>With all my heart, I ask you:</p>
+    </div>
+
+    <!-- Will you be my valentine? question -->
+    <div class="question">
+        Will you be my valentine?
+    </div>
+
+    <!-- Input box to type answer -->
+    <input type="text" id="userAnswer" placeholder="Type your answer here..." />
+
+    <!-- Submit button -->
+    <button class="submit-button" onclick="checkAnswer()">Submit Answer</button>
+
+    <div class="thankYouMessage" id="thankYouMessage">
+        <p>Thank you for accepting to be my valentine, baby! <span class="heart"❤️</span></p>
+        <p>Please reply to me on iMessage!</p>
+    </div>
+</div>
+
+<script>
+    function checkAnswer() {
+        const answer = document.getElementById('userAnswer').value.trim().toLowerCase();
+        if (answer === "yes") {
+            document.querySelector('.submit-button').style.display = 'none'; // Hide submit button
+            document.getElementById('userAnswer').style.display = 'none'; // Hide text box
+            document.getElementById('thankYouMessage').style.display = 'block'; // Show message
+        } else {
+            alert("Only 'YES' is the answer! Please try again.");
+        }
+    }
+</script>
+
+</body>
+</html>
